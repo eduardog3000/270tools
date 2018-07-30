@@ -822,8 +822,8 @@
     function change_electors() {
         console.log(`?${params}`)
         //top.history.replaceState({}, '', `${window.location.pathname}?${params}`);
-        senators = territories.filter(a => a.is_state).length * $('#senators').val();
-        reps = Number($('#reps').val())
+        var senators = territories.filter(a => a.is_state).length * $('#senators').val();
+        var reps = Number($('#reps').val())
         var ev = senators + reps + ($('#a23').prop('checked') ? 3 : 0);
         var needed = Math.floor((ev / 2) + 1);
         $('#USA-evs').text(ev);
