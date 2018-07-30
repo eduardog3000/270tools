@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         270tools
 // @namespace    https://github.com/eduardog3000
-// @version      0.2
+// @version      0.3
 // @description  Tool for 270 to Win Presidential Map. Can remove states, grant statehood to territories, and change the number of senators and house reps (and therefore total electoral votes).
 // @author       eduardog3000
 // @license      0BSD
