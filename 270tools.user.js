@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         270tools
 // @namespace    https://github.com/eduardog3000
-// @version      0.1
+// @version      0.2
 // @description  Tool for 270 to Win Presidential Map. Can remove states, grant statehood to territories, and change the number of senators and house reps (and therefore total electoral votes).
 // @author       eduardog3000
 // @license      0BSD
@@ -645,8 +645,25 @@
             m.states[t.fips].e_votes = t.ev.toString() | 0;
 
             if(t.fips == "23") {
-                m.states[t.fips].MX.e_votes = t.ev - 2;
-                $('#sp_23_1').text('ME ' + (t.ev - 2));
+                var atlarge = t.ev >= 4 ? t.ev - 2 : (t.ev == 3 ? 2 : t.ev);
+                m.states[t.fips].MX.e_votes = atlarge;
+                $('#sp_23_1').text('ME ' + atlarge);
+                if(t.ev >= 4) {
+                    $('#sp_23_4').text('1');
+                    m.states[t.fips].M4.e_votes = 1;
+                } else {
+                    $('#sp_23_4').text('0');
+                    m.states[t.fips].M4.e_votes = 0;
+                }
+
+                if(t.ev >= 3) {
+                    $('#sp_23_3').text('1');
+                    m.states[t.fips].M3.e_votes = 1;
+                } else {
+                    $('#sp_23_3').text('0');
+                    m.states[t.fips].M3.e_votes = 0;
+                }
+
                 $(`.state_info:contains(${t.abbr})`).html(`${t.abbr}<br />${t.ev}`);
                 if(t.ev == 0) {
                     $('#sp_23_1').parent().hide();
@@ -656,8 +673,34 @@
                     $('#23').show();
                 }
             } else if(t.fips == "31") {
-                m.states[t.fips].NX.e_votes = t.ev - 3;
-                $('#sp_31_1').text('NE ' + (t.ev - 3));
+                var atlarge = t.ev >= 5 ? t.ev - 3 : (t.ev >=4 ? t.ev - 2 : (t.ev == 3 ? 2 : t.ev));
+                m.states[t.fips].NX.e_votes = atlarge;
+                $('#sp_31_1').text('NE ' + atlarge);
+
+                if(t.ev >= 5) {
+                    $('#sp_31_5').text('1');
+                    m.states[t.fips].N5.e_votes = 1;
+                } else {
+                    $('#sp_31_5').text('0');
+                    m.states[t.fips].N5.e_votes = 0;
+                }
+
+                if(t.ev >= 4) {
+                    $('#sp_31_4').text('1');
+                    m.states[t.fips].N4.e_votes = 1;
+                } else {
+                    $('#sp_31_4').text('0');
+                    m.states[t.fips].N4.e_votes = 0;
+                }
+
+                if(t.ev >= 3) {
+                    $('#sp_31_3').text('1');
+                    m.states[t.fips].N3.e_votes = 1;
+                } else {
+                    $('#sp_31_3').text('0');
+                    m.states[t.fips].N3.e_votes = 0;
+                }
+
                 $(`.state_info:contains(${t.abbr})`).html(`${t.abbr}<br />${t.ev}`);
                 if(t.ev == 0) {
                     $('#sp_31_1').parent().hide();
