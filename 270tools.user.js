@@ -4,6 +4,7 @@
 // @version      0.1
 // @description  Tool for 270 to Win Presidential Map. Can remove states, grant statehood to territories, and change the number of senators and house reps (and therefore total electoral votes).
 // @author       eduardog3000
+// @license      0BSD
 // @match        https://www.270towin.com/
 // @grant        GM_getResourceText
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js
